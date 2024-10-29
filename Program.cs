@@ -1,4 +1,12 @@
-﻿using System;
+static List<string> LoadHistory()
+{
+    if (File.Exists("history.txt"))
+    {
+        return new List<string>(File.ReadAllLines("history.txt"));
+    }
+    return new List<string>();
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 
