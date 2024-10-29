@@ -49,7 +49,7 @@ namespace MathOperationsApp
 
         static void SaveHistory(List<string> history)
         {
-            Console.WriteLine("Сохраняем историю...");
+            Console.WriteLine("Сохраняем историю");
             File.WriteAllLines("history.txt", history);
             Console.WriteLine("История сохранена в history.txt");
         }
