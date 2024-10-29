@@ -1,12 +1,4 @@
-static List<string> LoadHistory()
-{
-    if (File.Exists("history.txt"))
-    {
-        return new List<string>(File.ReadAllLines("history.txt"));
-    }
-    return new List<string>();
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -16,7 +8,7 @@ namespace MathOperationsApp
     {
         static void Main(string[] args)
         {
-            var history = new List<string>();
+            var history = LoadHistory();
             string input;
             Console.WriteLine("Введите математические выражения (или 'exit' для выхода):");
 
@@ -43,13 +35,21 @@ namespace MathOperationsApp
 
         static double EvaluateExpression(string expression)
         {
-            // Простой парсер для выражений (можно улучшить)
             var dataTable = new System.Data.DataTable();
             return Convert.ToDouble(dataTable.Compute(expression, string.Empty));
+        }
+        static List<string> LoadHistory()
+        {
+            if (File.Exists("history.txt"))
+            {
+                return new List<string>(File.ReadAllLines("history.txt"));
+            }
+            return new List<string>();
         }
 
         static void SaveHistory(List<string> history)
         {
+            Console.WriteLine("Сохраняем историю...");
             File.WriteAllLines("history.txt", history);
             Console.WriteLine("История сохранена в history.txt");
         }
